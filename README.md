@@ -34,6 +34,72 @@ To control canary's operation, two-level permission system is used, which divide
 
 All the users, also including all the people aside (who have no permissions at all) can trigger `CanaryDied` event if the canary was not updated by the time set at `aliveUntil`.
 
-## License
+### Contract events
+
+####  event CanaryUpdated(address)
+
+Fired on canary updates.
+
+####  event UpdateIntervalChanged(address, uint, uint);
+
+Fired on update interval changes. Fields are: event triggering initiator, old value, new value.
+
+####  event CanaryDied(address, uint, uint);
+
+Fired only after canary's death. Arguments are: event triggering initiator, time of death, last update.
+
+### Contract methods
+
+#### function Canary (uint, string)
+
+Constructor of the contract. Arguments are: update interval (in seconds) and description of the canary.
+
+#### function update () alive onlyTrusted returns (bool)
+
+Update the canary (has effect only if called by owners or confidants).
+
+#### setUpdateInterval (uint) alive onlyOwners
+
+Set update interval.
+
+#### function getDeathTime () constant returns (uint)
+
+Get probable death time.
+
+#### function spawnDeathNotification ()
+
+Fire `CanaryDied` event if the canary is dead.
+
+#### function addOwner (address) alive onlyOwners returns (bool)
+
+Add new owner. Can be called by owners only.
+
+#### function removeOwner (address) alive onlyOwners returns (bool) 
+
+Remove existing owner. Can be called by owners only.
+
+#### function addConfidant (address) alive onlyOwners returns (bool)
+
+Add new confidant. Can be called by owners only.
+
+#### function removeConfidant (address) alive onlyOwners returns (bool)
+
+Remove existing confidant. Can be called by owners only.
+
+### Method modifiers
+
+#### alive
+
+Permits execution iff canary is alive.
+
+#### onlyOwners
+
+Permits execution only if `msg.sender` is owner.
+
+#### onlyTrusted
+
+Permits execution if `msg.sender` is owner or confidant.
+
+# License
 
 WTFPL
