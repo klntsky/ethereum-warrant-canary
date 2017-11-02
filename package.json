@@ -1,0 +1,14 @@
+{
+  "name": "ethereum-warrant-canary",
+  "version": "1.0.0",
+  "description": "Warrant canary implementation in solidity",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "dependencies": {
+    "web3": "^1.0.0-beta.24"
+  }
+}
