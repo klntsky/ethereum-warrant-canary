@@ -10,7 +10,7 @@ It can also be used to prove that the owner of a canary was alive at a given tim
 
 # Why ethereum?
 
-Because blockchain transactions are non-revesible and smart contract's state can be inspected at any time.
+Because blockchain transactions are irreversible and smart contract's state can be inspected at any time.
 
 Even if you choose to host your own canary in form of, for example, weekly-updatable PGP-signed message, you should take care of it's availability, and no matter how much you pay for a hosting service, the server may go down, creating uncertainity. Blockchain eliminates that problem.
 
